@@ -26,3 +26,9 @@ v 1.0
 -Added support for Fast saved files
 -Added support for older versions of Word (Word 1.0 and 2.0 for Windows)
 -Changed license to LGPL
+
+v 1.1
+----------
+-Made code binary compatible with POI 3.17
+-Updated to Java6 class file format
+

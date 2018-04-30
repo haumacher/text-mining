@@ -20,15 +20,20 @@
  */
 package org.textmining.extraction.word;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.util.List;
+
 import org.apache.poi.util.LittleEndian;
-import org.textmining.extraction.TextExtractor;
-import org.textmining.extraction.word.chp.*;
-import org.textmining.extraction.word.model.*;
-import org.textmining.extraction.word.sprm.*;
-
-
-import java.util.*;
-import java.io.*;
+import org.textmining.extraction.word.chp.Word6CHPBinTable;
+import org.textmining.extraction.word.model.CHPX;
+import org.textmining.extraction.word.model.ComplexNodeHelper;
+import org.textmining.extraction.word.model.NodeHelper;
+import org.textmining.extraction.word.model.PieceDescriptor;
+import org.textmining.extraction.word.model.TextPiece;
+import org.textmining.extraction.word.model.TextPieceTable;
 
 /**
  * This class is used to extract text from Word 6 documents only. It should
@@ -70,7 +75,7 @@ public class Word6TextExtractor
     boolean deleted = false;
     while (offset < grpprl.length)
     {
-      switch (LittleEndian.getUnsignedByte(grpprl, offset++))
+      switch (LittleEndian.getUByte(grpprl, offset++))
       {
         case 65:
           deleted = grpprl[offset++] != 0;

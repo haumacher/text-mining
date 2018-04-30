@@ -1,5 +1,5 @@
 <project name="textmining" default="create-jar">
-	<property name="version" value="1.0"/>
+	<property name="version" value="1.1"/>
 
 	<fileset id="tm-src" dir="src">
 		<include name="**/*.java"/>
@@ -23,6 +23,14 @@
 				<include name="lgpl-2_1.txt"/>
 			</fileset>			
 		</jar> 
+		<zip destfile="build/bin/tm-extractors-${version}-src.zip">
+			<fileset dir="build/src">
+				<include name="**/*.*"/>
+			</fileset>			
+			<fileset dir="etc">
+				<include name="lgpl-2_1.txt"/>
+			</fileset>			
+		</zip> 
 	</target>
 
 	
@@ -51,7 +59,7 @@
 	</target>
 
 	<target name="build-tm" depends="clean, prepare-src">
-		<javac destdir="build/bin" debug="off" compiler="modern" target="1.4" source="1.4">
+		<javac destdir="build/bin" debug="off" compiler="modern" target="1.6" source="1.6">
 			<src path="build/src"/> 
 			<classpath>
 				<fileset refid="tm-lib"/>				

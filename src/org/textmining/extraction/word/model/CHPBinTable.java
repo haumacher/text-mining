@@ -20,10 +20,8 @@
  */
 package org.textmining.extraction.word.model;
 
-import java.util.List;
 import java.util.ArrayList;
-import java.io.OutputStream;
-import java.io.IOException;
+import java.util.List;
 
 import org.apache.poi.poifs.common.POIFSConstants;
 import org.apache.poi.util.LittleEndian;
@@ -65,7 +63,7 @@ public class CHPBinTable
       GenericPropertyNode node = binTable.getProperty(x);
 
       int pageNum = LittleEndian.getInt(node.getBytes());
-      int pageOffset = POIFSConstants.BIG_BLOCK_SIZE * pageNum;
+      int pageOffset = POIFSConstants.SMALLER_BIG_BLOCK_SIZE * pageNum;
 
       CHPFormattedDiskPage cfkp = new CHPFormattedDiskPage(documentStream,
         pageOffset, fcMin, fc2Cp);

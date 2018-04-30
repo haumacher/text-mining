@@ -51,7 +51,7 @@ public class SprmOperation
     {
       case 0:
       case 1:
-        _operand = LittleEndian.getUnsignedByte(grpprl, offset);
+        _operand = LittleEndian.getUByte(grpprl, offset);
         _sizeNeeded = 3;
         break;
       case 2:

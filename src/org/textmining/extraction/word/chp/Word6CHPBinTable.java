@@ -20,14 +20,15 @@
  */
 package org.textmining.extraction.word.chp;
 
-import java.util.List;
 import java.util.ArrayList;
-import java.io.OutputStream;
-import java.io.IOException;
+import java.util.List;
 
 import org.apache.poi.poifs.common.POIFSConstants;
 import org.apache.poi.util.LittleEndian;
-import org.textmining.extraction.word.model.*;
+import org.textmining.extraction.word.model.CHPFormattedDiskPage;
+import org.textmining.extraction.word.model.GenericPropertyNode;
+import org.textmining.extraction.word.model.NodeHelper;
+import org.textmining.extraction.word.model.PlexOfCps;
 
 
 
@@ -61,7 +62,7 @@ public class Word6CHPBinTable
       GenericPropertyNode node = binTable.getProperty(x);
 
       int pageNum = LittleEndian.getShort((byte[])node.getBytes());
-      int pageOffset = POIFSConstants.BIG_BLOCK_SIZE * pageNum;
+      int pageOffset = POIFSConstants.SMALLER_BIG_BLOCK_SIZE * pageNum;
       
       //TODO fix this
       CHPFormattedDiskPage cfkp = new CHPFormattedDiskPage(documentStream,
